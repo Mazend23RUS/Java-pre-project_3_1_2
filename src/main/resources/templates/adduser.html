@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add_user</title>
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+
+<body>
+
+<h1 align="center">Добавление нового пользователя</h1>
+<h1></h1>
+
+
+  <div align="center">
+
+    <p>Добавление нового пользователя</p>
+    <table border="2">
+
+        <form action="#" th:action="@{/adduser}" method="post">
+
+            <tr>
+                <th th:align="left">Name : <input type="text" name="userName" size="10"/></th>
+            </tr>
+            <tr>
+                <th th:align="left">Surname : <input type="text" name="userSurname" size="10"/></th>
+            </tr>
+            <tr>
+                <th th:align="left">Age : <input name="age" size="2"/></th>
+            </tr>
+
+            <th>
+                <input type="submit" value="Добавить Пользователя"/>
+            </th>
+
+        </form>
+    </table>
+   </div>
+
+
+
+  </body>
+</html>
