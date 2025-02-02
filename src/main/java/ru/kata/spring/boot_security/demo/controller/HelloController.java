@@ -20,15 +20,15 @@ public class HelloController {
 
 
     @GetMapping("/")
-    public String printWelcome(ModelMap model) {
-        model.addAttribute("allUsers", serviceUserInterface.getAllUsersList());
+    public String printWelcome() {
+//        model.addAttribute("allUsers", serviceUserInterface.getAllUsersList());
         return "index";
     }
 
     @GetMapping("/users")
     public String printUsers(ModelMap model) {
         model.addAttribute("allUsers", serviceUserInterface.getAllUsersList());
-        return "index";
+        return "users";
     }
 
 
@@ -36,8 +36,9 @@ public class HelloController {
     public String saveNewUser(
                               @RequestParam String userName,
                               @RequestParam (required = false) String userSurname,
-                              @RequestParam (required = false) Integer age, ModelMap model) {
-        User user = new User( userName, userSurname, age);
+                              @RequestParam (required = false) Integer age,
+                              @RequestParam String password, ModelMap model) {
+        User user = new User(userName, userSurname, age, password);
 
         model.addAttribute("user", user);
         serviceUserInterface.addUser(user);

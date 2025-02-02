@@ -11,6 +11,7 @@ import ru.kata.spring.boot_security.demo.models.User;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -39,10 +40,23 @@ public class ImplementUserInterface implements UserInterface {
     }
 
 
+//    @Transactional
+//    @Override
+//    public Optional<User> getUserByName(String userName) {
+//        return Optional.ofNullable(entityManager.find(User.class, userName));
+//    }
+
+
+    @Transactional
+    @Override
+    public User getUserByName(String userName) {
+//        User user = entityManager.find(User.class, userName)
+        return (User) entityManager.createQuery("select u from User u where u.userName = userName").getResultList().get(0);
+    }
+
     public User getUserById(Long id) {
         return entityManager.find(User.class, id);
     }
-
     @Override
     @Transactional
     public void deleteUser(Long id) {

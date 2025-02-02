@@ -6,6 +6,7 @@ package ru.kata.spring.boot_security.demo.service;
 import ru.kata.spring.boot_security.demo.models.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ServiceUserInterface {
 
@@ -19,5 +20,7 @@ public interface ServiceUserInterface {
 
     User getUserById(Long id);
 
+//    Optional<User> getUserByName(String userName);
+    User getUserByName(String userName);
 
 }

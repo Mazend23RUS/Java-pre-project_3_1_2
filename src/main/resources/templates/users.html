@@ -54,13 +54,15 @@
         <td><span th:text="${user.getUserName()}"> User  </span> </td>
         <td><span th:text="${user.getUserSurname()}"> Surname </span></td>
         <td><span th:text="${user.getAge()}"> Age </span></td>
+        <td><span th:text="${user.getPassword()}"> Password </span> </td>
         <td><a th:href="@{/updateuser(id=${user.getId()})}" class="btn btn-primary" > Редакти-ть </a> </td>
         <td><a th:href="@{/deleteuser(id=${user.getId()})}" class="btn btn-danger" > Удалить </a> </td>
       </tr>
-
-
       </tbody>
+
+
     </table>
+
   </form>
 </div>
 
@@ -70,7 +72,7 @@
 
 
 <div class="link" style="text-align: center">
-  <a style="color: darkgoldenrod; font-size: 120%"
+  <a style="color: darkgoldenrod; font-size: 140%"
      href="http://localhost:8080/adduser">Добавить нового пользователя</a>
 </div>
 

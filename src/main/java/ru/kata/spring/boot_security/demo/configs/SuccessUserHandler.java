@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
 public class SuccessUserHandler implements AuthenticationSuccessHandler {
@@ -16,10 +17,17 @@ public class SuccessUserHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-        if (roles.contains("ROLE_USER")) {
-            httpServletResponse.sendRedirect("/user");
+        String result =  roles.stream().map(m -> m.replace("[ROLE_[",""))
+                .toList().toString();
+
+
+
+        if (result.contains("ROLE_ADMIN")) {
+            httpServletResponse.sendRedirect("/users");
+        } else if (result.contains("ROLE_USER")) {
+            httpServletResponse.sendRedirect("/adduser");
         } else {
-            httpServletResponse.sendRedirect("/");
+            httpServletResponse.sendRedirect("/user");
         }
     }
 }
