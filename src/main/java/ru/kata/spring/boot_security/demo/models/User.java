@@ -27,7 +27,7 @@ public class User implements  UserDetails {
     private Integer age;
     private String password;
 
-    @OneToMany(fetch=FetchType.EAGER, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private Set <Role> role = new HashSet<>();
 
     public User(){}

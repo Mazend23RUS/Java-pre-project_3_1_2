@@ -17,17 +17,20 @@ public class SuccessUserHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-        String result =  roles.stream().map(m -> m.replace("[ROLE_[",""))
+        String result =  roles.stream().map(m -> m.replace("[",""))
+                .map(m -> m.replace("]",""))
+                .map(m -> m.replace("]",""))
+                .map(m -> m.replace("]",""))
                 .toList().toString();
 
 
 
-        if (result.contains("ROLE_ADMIN")) {
+        if (result.contains("ADMIN")) {
             httpServletResponse.sendRedirect("/users");
-        } else if (result.contains("ROLE_USER")) {
-            httpServletResponse.sendRedirect("/adduser");
-        } else {
+        } else if (result.contains("USER")) {
             httpServletResponse.sendRedirect("/user");
+        } else {
+            httpServletResponse.sendRedirect("/");
         }
     }
 }

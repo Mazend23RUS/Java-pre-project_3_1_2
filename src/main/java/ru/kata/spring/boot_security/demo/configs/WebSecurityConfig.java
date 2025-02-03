@@ -51,6 +51,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements U
                 .and()
                 .logout()
                 .permitAll();
+
+
     }
 
 

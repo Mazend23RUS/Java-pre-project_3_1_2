@@ -47,11 +47,11 @@ public class ImplementUserInterface implements UserInterface {
 //    }
 
 
-    @Transactional
+//    @Transactional
     @Override
     public User getUserByName(String userName) {
-//        User user = entityManager.find(User.class, userName)
-        return (User) entityManager.createQuery("select u from User u where u.userName = userName").getResultList().get(0);
+        List<User> userListFromDb = entityManager.createQuery("select u from User u where u.userName = userName").getResultList();
+        return userListFromDb.stream().filter(  f -> f.getUsername().equals(userName)).findFirst().get();
     }
 
     public User getUserById(Long id) {

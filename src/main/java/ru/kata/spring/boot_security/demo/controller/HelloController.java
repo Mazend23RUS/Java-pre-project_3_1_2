@@ -43,7 +43,7 @@ public class HelloController {
         model.addAttribute("user", user);
         serviceUserInterface.addUser(user);
 
-        return "redirect:/";
+        return "redirect:/users";
     }
 
     @GetMapping("/adduser")
@@ -71,7 +71,7 @@ public class HelloController {
 
         serviceUserInterface.updateUser(user);
 
-        return "redirect:/";
+        return "redirect:/users";
     }
 
     @GetMapping("/updateuser")
